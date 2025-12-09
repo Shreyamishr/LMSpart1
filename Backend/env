@@ -1,2 +1,0 @@
-PORT=8000
-MONGODB_URL="mongodb+srv://shreyamishraj61_db_user:Shreya@01@cluster0.19cliwe.mongodb.net/"
