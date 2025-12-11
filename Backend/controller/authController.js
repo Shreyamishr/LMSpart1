@@ -84,6 +84,7 @@ import User from "../model/userModel.js";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import genToken from "../config/token.js";
+import sendMail from "../config/sendMail.js";
 
 export const signUp = async (req, res) => {
     try {
@@ -178,3 +179,52 @@ export const logOut = async (req, res) => {
         return res.status(500).json({ message: "Logout failed" });
     }
 };
+export const sendOTP=async(req,res)=>{
+    try{
+        const{email}=req.body
+        const user=await useReducer.findOne({email})
+        if (!user){
+            return res.status(404).json({message:"User not found"})
+
+        }
+        const otp=Math.floor(1000+Math.random()*9000).toString()
+        user.resetOtp=otp,
+        user.otpExprires=Date.now()+5*60*1000
+        user.isOtpVerifed=false
+        await user.save()
+        await sendMail(email,otp)
+        return res.status(200).json({message:"otp Send Successfully"})
+    }
+    catch(error){
+
+         return res.stayus(500).json({message:"Failed to send otp $ {error"})
+
+
+    }
+}
+
+export const verifyOTP=async(req,res)=>{
+    try{
+
+        const {email,otp}=req.body
+        const user=await useReducer.findOne({email})
+        if (!user||user.resetOtp!==otp||user.otpExprires<Date.now()){
+            return res.status(404).json({message:"invalid Otp"})
+
+    } 
+    user.isOtpVerifed=true
+    user.resetOtp=undefined,
+        user.otpExprires=undefined,
+       await user.save()
+       return res.status(200).json({
+    message:`otp verified successfully`
+       })
+    }
+    catch(error){
+
+                return res.status(500).json({message:"Failed to verify otp ${error"})
+
+
+    }
+}
+

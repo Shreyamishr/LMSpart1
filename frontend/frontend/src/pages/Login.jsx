@@ -117,7 +117,7 @@ import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'; // For Eye Icons
 // API and State Management Imports
 import { serverURL } from '../App';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners'; 
 import { useDispatch } from 'react-redux';
@@ -210,16 +210,17 @@ function Login() {
             </div>
           </div>
 
-          {/* Forgot Password Link */}
-          <div className='w-[80%] flex justify-end px-3'>
-            <span className='text-sm text-gray-500 cursor-pointer hover:underline'>Forgot Password?</span>
-          </div>
+          {/* Forgot Password Link */}
+           <div className='w-[80%] flex justify-end px-3'>
+            <Link to="/forget" className='text-sm text-gray-500 hover:underline'>Forgot Password?</Link>
+          </div>
 
           {/* Log In Button */}
           <button 
-             type="submit" // Changed to submit type for form handling
-             className='w-[80%] h-[40px] bg-black text-white cursor-pointer flex items-center justify-center rounded-[5px] mt-4 disabled:opacity-50'
-             disabled={loading}
+//             type="submit" // Changed to submit type for form handling
+            className='w-[80%] h-[40px] bg-black text-white cursor-pointer flex items-center justify-center rounded-[5px] mt-4 disabled:opacity-50'
+            disabled={loading}
+        
           >
             {loading ? <ClipLoader size={20} color='white'/> : "Log In"}
           </button>

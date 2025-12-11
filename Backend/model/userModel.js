@@ -27,7 +27,17 @@ photourl:{
 enrolledCourses:[{
     type:mongoose.Schema.Types.ObjectId,
     Ref:"Course"
-}]
+}],
+resetOtp:{
+    type:String
+},
+otpExprires:{
+    type:Date
+},
+isOtpVerifed:{
+    type:Boolean,
+    default:false
+}
 },
     {timestamps:true})
     const User =mongoose.model("User",userSchema)
