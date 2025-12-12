@@ -1,13 +1,27 @@
-import jwt from 'jsonwebtoken'
+// import jwt from "jsonwebtoken";
+// import dotenv from "dotenv";
 
-const genToken = async (userId) => {
-    try {
-        const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '7d' })
-        return token
-    } catch (error) {
-        console.error('JWT sign error:', error)
-        return null
-    }
-}
+// dotenv.config();
 
-export default genToken
+// const genToken = (id) => {
+//   return jwt.sign({ id }, process.env.JWT_SECRET, {
+//     expiresIn: "7d",
+//   });
+// };
+
+// export default genToken;
+
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const genToken = (id) => {
+  // Sign a token with `userId` so `isAuth` can read `verifyToken.userId`
+  return jwt.sign({ userId: id }, process.env.JWT_SECRET, {
+    expiresIn: "7d",
+  });
+};
+
+export default genToken;
+

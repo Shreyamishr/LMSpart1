@@ -1,11 +1,24 @@
 import express from "express";
+import {
+    signUp,
+    login,
+    logOut,
+    sendOTP,
+    verifyOTP,
+    resetPassword,
+    googleAuth
+} from "../controller/authController.js";
 
-import { login, signUp ,logOut} from "../controller/authController.js";
+const router = express.Router();
 
-const authRouter=express.Router();
+router.post("/signup", signUp);
+router.post("/login", login);
+router.post("/logout", logOut);
 
-authRouter.post("/signup",signUp)
-authRouter.post("/login",login)
-authRouter.get("/logout",logOut)
+router.post("/sendOTP", sendOTP);
+router.post("/verifyOTP", verifyOTP);
+router.post("/resetPassword", resetPassword);
+// route for google oauth signup/login
+router.post("/googleSignup", googleAuth)
 
-export default authRouter
+export default router;

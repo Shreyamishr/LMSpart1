@@ -25,9 +25,10 @@ function Nav({ userData }) {
     // Async function to handle user logout (unchanged logic)
     const handleLogout = async () => {
         try {
-            const result = await axios.get(
-                serverURL + "/api/auth/logout", 
-                { withCredentials: true } 
+            const result = await axios.post(
+                serverURL + "/api/auth/logout",
+                {},
+                { withCredentials: true }
             );
             
             dispatch(setUserData(null)); 
