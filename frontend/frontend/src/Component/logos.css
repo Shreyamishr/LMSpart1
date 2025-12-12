@@ -1,0 +1,79 @@
+/* Feature chips row */
+.featureRow {
+  /* FIX: proper left/right gap + centered row */
+  width: 100%;
+  padding: 0 16px;              /* left/right gap inside row */
+  margin: 10px auto 26px;       /* center the row block */
+
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  justify-content: center;      /* FIX: chips center me aayenge */
+}
+
+/* Each chip */
+.featureChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  background: #e5e7eb;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.featureChip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon box */
+.featureChip__icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d1d5db;
+  border: 1px solid #cbd5e1;
+  font-size: 16px;
+  color: #374151;
+}
+
+/* Text */
+.featureChip__text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  white-space: nowrap;
+}
+
+/* Desktop spacing */
+@media (min-width: 1024px) {
+  .featureRow {
+    padding: 0 0;               /* desktop pe container already padding deta hoga */
+    justify-content: flex-start; /* screenshot jaise left aligned chahiye to */
+    /* agar center chahiye desktop pe bhi, to is line ko "center" kar do */
+  }
+
+  .featureChip {
+    padding: 10px 22px;         /* 30 zyada ho raha tha */
+  }
+}
+@media (min-width: 1440px) {
+    .featureRow {
+        max-width: 1440px;
+        padding: 0 0;
+        justify-content: flex-start;
+        margin-right: -90px;
+    }
+}
