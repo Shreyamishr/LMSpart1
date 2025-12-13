@@ -1,0 +1,257 @@
+/* src/pages/Courses.css */
+
+/* ------------------------------------- */
+/* 1. Global Page Layout */
+/* ------------------------------------- */
+
+.courses-page-container {
+    background-color: #f7f7f7; /* हल्का बैकग्राउंड */
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.courses-content-area {
+    padding: 100px 5% 40px 5%; /* Nav के नीचे जगह */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.courses-page-heading {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* ------------------------------------- */
+/* 2. Primary Buttons */
+/* ------------------------------------- */
+
+.create-new-course-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.create-new-course-btn:hover {
+    background-color: #333;
+}
+
+/* ------------------------------------- */
+/* 3. Grid and Card Styles */
+/* ------------------------------------- */
+
+.courses-grid {
+    display: grid;
+    /* responsive grid: 280px से कम नहीं, अधिकतम 4 कॉलम तक */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 25px;
+}
+
+.course-management-card {
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-management-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.course-card-thumbnail {
+    width: 100%;
+    height: 160px; /* थोड़ा बड़ा थंबनेल */
+    object-fit: cover;
+    display: block;
+}
+
+.course-card-details {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card-title {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.course-card-subtitle {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    color: #666;
+    height: 36px; /* 2 lines max */
+    overflow: hidden;
+}
+
+/* Stats Section */
+.course-card-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #555;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    margin-top: auto; /* actions को नीचे धकेलें */
+}
+
+/* 4. Actions */
+.course-card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.course-badge {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+}
+.course-badge.published { background: #28a745; }
+.course-badge.draft { background: #6c757d; }
+
+.course-management-card { position: relative; }
+
+/* Toggle switch styles (simple) */
+.publish-toggle-wrap { display: flex; align-items: center; gap: 10px; }
+.publish-label { font-weight: 600; font-size: .85rem; color: #444; }
+.switch { position: relative; display: inline-block; width: 46px; height: 26px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.publish-toggle-wrap .loading {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #777;
+    animation: pulse 1s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(.85); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .2s; border-radius: 26px; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .2s; border-radius: 50%; }
+.switch input:checked + .slider { background-color: #28a745; }
+.switch input:checked + .slider:before { transform: translateX(20px); }
+.switch input:disabled + .slider { opacity: 0.5; cursor: not-allowed; }
+
+.course-card-btn {
+    flex-grow: 1;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-weight: 600;
+}
+
+.edit-btn {
+    background-color: #007bff; /* Blue for Edit */
+    color: #fff;
+}
+
+.edit-btn:hover {
+    opacity: 0.9;
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Red for Delete */
+    color: #fff;
+}
+
+.delete-btn:hover {
+    opacity: 0.9;
+}
+
+.publish-btn {
+    background-color: #28a745; /* green */
+    color: #fff;
+}
+.unpublish-btn {
+    background-color: #6c757d; /* gray */
+    color: #fff;
+}
+
+.publish-btn:hover, .unpublish-btn:hover {
+    opacity: 0.9;
+}
+
+/* 5. State Messages */
+.courses-loading-area, .courses-empty-state, .courses-error-message {
+    text-align: center;
+    padding: 50px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+.courses-error-message {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* ------------------------------------- */
+/* 6. Mobile Responsiveness */
+/* ------------------------------------- */
+
+@media (max-width: 768px) {
+    .courses-content-area {
+        padding: 80px 5% 30px 5%;
+    }
+    
+    .courses-page-heading {
+        font-size: 1.5rem;
+    }
+
+    .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    }
+    
+    .course-card-thumbnail {
+        height: 140px;
+    }
+
+    .course-card-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .courses-grid {
+        /* छोटे मोबाइल पर एक ही कॉलम */
+        grid-template-columns: 1fr; 
+    }
+}
