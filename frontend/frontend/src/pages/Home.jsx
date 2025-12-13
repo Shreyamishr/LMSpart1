@@ -10,6 +10,7 @@ import "./home.css";
 import { FaGraduationCap, FaArrowRight, FaPlay } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import Logos from "../Component/logos";
+import ExploreCourses from "../Component/ExploreCourses";
 
 function Home() {
   const userData = useSelector((state) => state.user.userData);
@@ -136,6 +137,7 @@ function Home() {
       {/* Logos / feature row inserted at bottom */}
       <div className="home__logos">
         <Logos />
+        <ExploreCourses/>
       </div>
     </div>
   );
