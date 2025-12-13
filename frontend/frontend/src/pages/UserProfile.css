@@ -1,0 +1,151 @@
+/* UserProfile.css */
+
+/* 🖼️ कंटेनर स्टाइलिंग (पूरे पेज को केंद्रित करने के लिए) */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f9; /* हल्का पृष्ठभूमि रंग */
+    padding: 20px;
+}
+
+/* 💳 प्रोफ़ाइल कार्ड स्टाइलिंग (मॉडेल जैसा दिखने के लिए) */
+.profile-card {
+    background: #ffffff;
+    border-radius: 12px; /* कोनों को गोल करें */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* गहरा और फैला हुआ शैडो */
+    width: 100%;
+    max-width: 450px; /* एक अच्छी चौड़ाई सेट करें */
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* ⬅️ बैक बटन */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.back-button:hover {
+    background-color: #eee;
+}
+
+/* 👤 प्रोफ़ाइल हेडर */
+.profile-header {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #4a90e2; /* आकर्षक नीला रंग */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    font-size: 36px;
+    font-weight: 600;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+}
+
+.profile-avatar__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.user-name {
+    font-size: 24px;
+    color: #2c3e50;
+    margin: 0 0 5px;
+    font-weight: 700;
+}
+
+.user-role {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- विभाजक (Divider) */
+.divider {
+    border: 0;
+    height: 1px;
+    background: #ecf0f1;
+    margin: 20px 0;
+}
+
+/* 📝 डिटेल्स सेक्शन */
+.profile-details {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.detail-item {
+    margin-bottom: 15px;
+}
+
+.detail-item label {
+    display: block;
+    font-size: 12px;
+    color: #95a5a6;
+    font-weight: 600;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+}
+
+.detail-item p {
+    font-size: 16px;
+    color: #34495e;
+    margin: 0;
+    word-wrap: break-word; /* लंबा टेक्स्ट तोड़ने के लिए */
+}
+
+.course-count {
+    font-weight: 700;
+    color: #e74c3c; /* इसे थोड़ा अलग दिखाने के लिए */
+}
+
+/* ✏️ एडिट प्रोफ़ाइल बटन */
+.edit-profile-button {
+    background-color: #2ecc71; /* आकर्षक हरा रंग */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+.edit-profile-button:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px); /* थोड़ा ऊपर उठाएँ */
+}
+
+.edit-profile-button:active {
+    transform: translateY(0);
+}

@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import authRouter from "./route/authRoute.js";
 import userRouter from "./route/userRoute.js";
 import cors from "cors";
+import path from 'path'
 
 dotenv.config();
 
@@ -23,6 +24,9 @@ app.use(cors({
 
 // CONNECT DATABASE
 connectDb();
+
+// Serve uploaded files from /public for development fallback
+app.use('/public', express.static(path.join(process.cwd(), 'public')));
 
 // ROUTES
 app.use("/api/auth", authRouter);

@@ -1,13 +1,24 @@
-import multer  from "multer"
+import multer from "multer"
+import fs from 'fs'
+import path from 'path'
 
-let storage =multer.diskstorage({
+const PUBLIC_DIR = path.resolve(process.cwd(), 'public')
 
-    destination:(req,file,cb)=>{
-        cb(null,'./public')
+// Ensure public directory exists so multer can write files into it
+if (!fs.existsSync(PUBLIC_DIR)) {
+    fs.mkdirSync(PUBLIC_DIR, { recursive: true })
+}
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, PUBLIC_DIR)
     },
-    filename:(req,file,cb)=>{
-        cb(null,file.originalname)
+    filename: (req, file, cb) => {
+        // Use a timestamp prefix to avoid collisions and keep original extension
+        const uniqueName = `${Date.now()}-${file.originalname.replace(/\s+/g, '-')}`
+        cb(null, uniqueName)
     }
 })
-const upload=multer({storage:storage})
+
+const upload = multer({ storage })
 export default upload

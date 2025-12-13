@@ -76,13 +76,22 @@ function Nav({ userData }) {
                             onClick={() => handleMenuItemClick("/login")} 
                         />
                     ) : (
-                        // Show user initial (Dropdown Trigger)
-                        <div 
-                            className='w-[40px] h-[40px] rounded-full text-black flex items-center justify-center text-[18px] font-semibold border-2 bg-white border-white cursor-pointer'
-                            onClick={toggleDropdown} // <-- Dropdown opens on avatar click
-                        >
-                            {userData.name?.slice(0, 1).toUpperCase()}
-                        </div>
+                        // Show user photo if present, otherwise initial (Dropdown Trigger)
+                        userData.photourl ? (
+                            <img
+                                src={userData.photourl}
+                                alt={userData.name || 'User'}
+                                className='w-[40px] h-[40px] rounded-full object-cover border-2 border-white cursor-pointer'
+                                onClick={toggleDropdown}
+                            />
+                        ) : (
+                            <div 
+                                className='w-[40px] h-[40px] rounded-full text-black flex items-center justify-center text-[18px] font-semibold border-2 bg-white border-white cursor-pointer'
+                                onClick={toggleDropdown} // <-- Dropdown opens on avatar click
+                            >
+                                {userData.name?.slice(0, 1).toUpperCase()}
+                            </div>
+                        )
                     )}
 
                     {/* Dropdown Menu (Visible only if logged in AND opened) */}
