@@ -6,6 +6,7 @@ import authRouter from "./route/authRoute.js";
 import userRouter from "./route/userRoute.js";
 import cors from "cors";
 import path from 'path'
+import courseRouter from "./route/courseRoute.js";
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use('/public', express.static(path.join(process.cwd(), 'public')));
 // ROUTES
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/course",courseRouter)
 
 // TEST ROUTE
 app.get("/", (req, res) => {

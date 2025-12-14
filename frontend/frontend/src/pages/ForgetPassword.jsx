@@ -5,7 +5,7 @@ import { ClipLoader } from 'react-spinners';
 import { serverURL } from '../App';
 import { useNavigate } from 'react-router-dom';
 
-function ForgotPassword() {
+function ForgetPassword() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
@@ -141,4 +141,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default ForgetPassword;

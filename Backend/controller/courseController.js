@@ -8,12 +8,26 @@ export const createCourse = async (req, res) => {
             return res.status(400).json({ message: "title and category are required" })
         }
 
-        const course = await Course.create({
+        // If a thumbnail file is provided, upload to Cloudinary and store URL
+        let thumbnail
+        if (req.file) {
+            try {
+                thumbnail = await uploadOnCloudinary(req.file.path)
+            } catch (err) {
+                // Log and continue; course can be created without cloud thumbnail
+                console.error('Cloudinary upload failed:', err)
+            }
+        }
+
+        const courseData = {
             title,
             category,
             description,
             creator: req.userId
-        })
+        }
+        if (thumbnail) courseData.thumbnail = thumbnail
+
+        const course = await Course.create(courseData)
 
         return res.status(201).json({ course })
     } catch (error) {
